@@ -17,7 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".SingUpActivity"></activity>
+        <activity android:name=".SingUpActivity" />
+        <activity
+            android:name=".dashboard.DashboardTabActivity"
+            android:label="@string/title_activity_dashboard_tab"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddCourseActivity" />
+        <activity android:name=".AddExamActivity"></activity>
     </application>
 
 </manifest>

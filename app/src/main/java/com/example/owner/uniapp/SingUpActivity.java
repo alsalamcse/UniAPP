@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SingUpActivity extends AppCompatActivity {
     private EditText edFirstName,edLastName,edPhone,edEmail2,edPassWord2,edPassWord3;
@@ -85,7 +88,7 @@ public class SingUpActivity extends AppCompatActivity {
                     Toast.makeText(SingUpActivity.this,"Authentication successful",Toast.LENGTH_SHORT).show();
                     //updateUserProfile(task.getResult().getUser();
                     finish();
-                    Intent intent=new Intent(SingUpActivity.this,AddSemesterActivity.class);
+                    Intent intent=new Intent(SingUpActivity.this,AddCourseActivity.class);
                     startActivity(intent);
                 }
                 else {

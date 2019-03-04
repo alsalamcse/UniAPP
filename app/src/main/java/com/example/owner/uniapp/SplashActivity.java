@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         tvAccount1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SplashActivity.this, SignIn.class);
+                Intent i = new Intent(SplashActivity.this, SignInActivity.class);
                 startActivity(i);
             }
         });
