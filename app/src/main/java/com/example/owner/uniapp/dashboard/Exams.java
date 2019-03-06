@@ -1,6 +1,8 @@
 package com.example.owner.uniapp.dashboard;
 
 public class Exams {
+
+    private String Key;
     private String ExamName;
     private int ExamDate;
     private int ExamStartHour;
@@ -32,13 +34,21 @@ public class Exams {
         ExamDate = examDate;
     }
 
-    public int getExamHour() {
+    public int getExamStartHour() {
         return ExamStartHour;
     }
 
-    public void setExamHour(int examHour) {
+    public void setExamStartHour(int examHour) {
         ExamStartHour = examHour;
     }
 
 
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
+    }
 }

@@ -61,7 +61,7 @@ public class SevenDaysAdapter extends RecyclerView.Adapter<SevenDaysAdapter.View
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Exams mItem;
 
         public ViewHolder(View view) {
             super(view);
