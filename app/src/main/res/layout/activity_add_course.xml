@@ -32,7 +32,7 @@
         app:layout_constraintStart_toEndOf="@+id/imgPen"
         app:layout_constraintTop_toBottomOf="@+id/tvAddCourse" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imgPen"
         android:layout_width="64dp"
         android:layout_height="0dp"
@@ -59,7 +59,7 @@
         android:layout_marginBottom="345dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rdMonday"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPen"
         app:srcCompat="@android:drawable/ic_menu_day" />
@@ -120,64 +120,65 @@
         android:layout_marginBottom="6dp"
         android:text="SaveCourse"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/edStartHour"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:ems="10"
-        android:hint="Course Start Hour"
-        android:inputType="textCapCharacters|textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgHour1"
-        app:layout_constraintTop_toBottomOf="@+id/rdThursday" />
-
-    <EditText
-        android:id="@+id/edEndHour"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginRight="46dp"
-        android:ems="10"
-        android:hint="Course End Hour"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgHour2"
-        app:layout_constraintTop_toBottomOf="@+id/edStartHour" />
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <ImageButton
         android:id="@+id/imgHour1"
-        android:layout_width="75dp"
+        android:layout_width="78dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="19dp"
         app:layout_constraintBottom_toTopOf="@+id/imgHour2"
-        app:layout_constraintEnd_toStartOf="@+id/edStartHour"
+        app:layout_constraintEnd_toStartOf="@+id/btn1"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPen"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
     <ImageButton
         android:id="@+id/imgHour2"
-        android:layout_width="74dp"
+        android:layout_width="77dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
         android:layout_marginBottom="117dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edEndHour"
+        app:layout_constraintEnd_toStartOf="@+id/btn2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgHour1"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="303dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="22dp"
+        android:text="Pick a start hour"
+        app:layout_constraintBottom_toTopOf="@+id/btn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgHour1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginBottom="63dp"
+        android:text="PICK AN END HOUR"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveCourse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgHour2"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
 </android.support.constraint.ConstraintLayout>

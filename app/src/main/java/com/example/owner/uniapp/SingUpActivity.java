@@ -51,7 +51,6 @@ public class SingUpActivity extends AppCompatActivity {
         String fname=edFirstName.getText().toString();
         String lname=edLastName.getText().toString();
         String phone=edPhone.getText().toString();
-        String ConPass3=edPassWord3.getText().toString();
         boolean isok=true;
         if (email.length()<4||
                 email.indexOf('@') <0 || email.indexOf('.')<0)

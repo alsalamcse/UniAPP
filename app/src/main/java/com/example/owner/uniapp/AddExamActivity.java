@@ -21,6 +21,7 @@ public class AddExamActivity extends AppCompatActivity {
     private  static final String TAG="AddExamActivity";
     private TextView tvAddExam,tvExamHour1,TvHour2,tvDate2,tvSave;
     private EditText edExamName;
+
     private Button btnExamDate,btnTimePicker1,btnTimePicker2;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private TimePickerDialog.OnTimeSetListener timeSetListener1,onTimeSetListener1;
@@ -58,7 +59,8 @@ public class AddExamActivity extends AppCompatActivity {
                 Calendar c=Calendar.getInstance();
                 int hour= c.get(Calendar.HOUR_OF_DAY);
                 int minute=c.get(Calendar.MINUTE);
-                TimePickerDialog dialog1=new TimePickerDialog(AddExamActivity.this,TimePickerDialog.OnTimeSetListener lis,mDateSetListener,hour,minute,boolean is24HourView);
+                TimePickerDialog dialog1=new TimePickerDialog(AddExamActivity.this,onTimeSetListener1,hour,minute, true);
+
                 //todo ClipDrawable
                 // dialog.getWindow().setBackgroundDrawable(new ClipDrawable(Color.TRANSPARENT));
                 dialog1.show();
@@ -68,9 +70,9 @@ public class AddExamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar  calendar1 =Calendar.getInstance();
-                int year= calendar1.get(Calendar.HOUR_OF_DAY);
-                int month= calendar1.get(Calendar.MINUTE);
-                TimePickerDialog dialog2=new TimePickerDialog(AddExamActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month);
+                int hour1= calendar1.get(Calendar.HOUR_OF_DAY);
+                int minute1= calendar1.get(Calendar.MINUTE);
+                TimePickerDialog dialog2=new TimePickerDialog(AddExamActivity.this,timeSetListener1,minute1,hour1, true);
 
                 dialog2.show();
             }
@@ -93,23 +95,27 @@ public class AddExamActivity extends AppCompatActivity {
         };
         timeSetListener1=new TimePickerDialog.OnTimeSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int i, int i3, int i2) {
-
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
             }
+
+
+
+
         };
          onTimeSetListener1 =new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int i, int i3, int i2) {
+             @Override
+             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+             }
 
 
-            }
+
+
+
         };
     }
     private void dataHandler() {
         String ExamName=edExamName.getText().toString();
-        Date date=Calendar.getInstance().getTime();
-        Integer ExamStartHour=
-
     }
 }

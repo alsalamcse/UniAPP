@@ -2,6 +2,7 @@ package com.example.owner.uniapp.dashboard;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,13 @@ import android.view.ViewGroup;
 import com.example.owner.uniapp.R;
 import com.example.owner.uniapp.dashboard.dummy.DummyContent;
 import com.example.owner.uniapp.dashboard.dummy.DummyContent.DummyItem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,11 +77,31 @@ public class ThisDayFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new ThisDayAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new ThisDayAdapter(readTask(), mListener));
         }
         return view;
     }
+    private List<Exams>readTask()
+    {
+        final ArrayList<Exams> exams=new ArrayList<>();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        reference.child("exams").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    Exams exams1=dataSnapshot1.getValue(Exams.class);
+                    exams.add(exams1);
 
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return exams;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -105,6 +132,6 @@ public class ThisDayFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Exams item);
     }
 }
