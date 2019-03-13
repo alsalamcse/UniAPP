@@ -13,6 +13,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.owner.uniapp.dashboard.DashboardTabActivity;
+
 import java.util.Calendar;
 
 public class AddCourseActivity extends AppCompatActivity {
@@ -62,7 +64,6 @@ public class AddCourseActivity extends AppCompatActivity {
                 int hour= c.get(Calendar.HOUR_OF_DAY);
                 int minute=c.get(Calendar.MINUTE);
                 TimePickerDialog dialog4=new TimePickerDialog(AddCourseActivity.this,timeSetListener3,hour,minute, true);
-
                 //todo ClipDrawable
                 // dialog.getWindow().setBackgroundDrawable(new ClipDrawable(Color.TRANSPARENT));
                 dialog4.show();
@@ -72,6 +73,9 @@ public class AddCourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dataHandler();
+                Intent intent = new Intent(AddCourseActivity.this,DashboardTabActivity.class);
+                startActivity(intent);
+
 
             }
 

@@ -23,7 +23,8 @@
             android:label="@string/title_activity_dashboard_tab"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddCourseActivity" />
-        <activity android:name=".AddExamActivity"></activity>
+        <activity android:name=".AddExamActivity" />
+        <activity android:name=".MyCoursesList"></activity>
     </application>
 
 </manifest>
