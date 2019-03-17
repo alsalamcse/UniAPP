@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.owner.uniapp.dashboard.DashboardTabActivity;
+import com.example.owner.uniapp.dashboard.DashboardTabActivity2;
 
 import java.util.Calendar;
 
@@ -34,7 +35,6 @@ public class AddCourseActivity extends AppCompatActivity {
         tvAddCourse=(TextView) findViewById(R.id .tvAddCourse) ;
        btnSaveCourse=(Button)findViewById(R.id .btnSaveCourse) ;
         imgPen=(ImageButton) findViewById(R.id.imgPen);
-        imgDay=(ImageButton) findViewById(R.id.imgDay);
         imgHour1=(ImageButton) findViewById(R.id.imgHour1);
         imgHour2=(ImageButton) findViewById(R.id.imgHour2);
         rdSunday=(RadioButton) findViewById(R.id.rdSunday);
@@ -73,7 +73,7 @@ public class AddCourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dataHandler();
-                Intent intent = new Intent(AddCourseActivity.this,DashboardTabActivity.class);
+                Intent intent = new Intent(AddCourseActivity.this,DashboardTabActivity2.class);
                 startActivity(intent);
 
 
