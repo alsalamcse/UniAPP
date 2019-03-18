@@ -1,5 +1,6 @@
 package com.example.owner.uniapp.dashboard;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,6 +20,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.example.owner.uniapp.AddExamActivity;
+import com.example.owner.uniapp.MyCoursesList;
 import com.example.owner.uniapp.R;
 
 public class DashboardTabActivity2 extends AppCompatActivity {
@@ -64,6 +67,8 @@ public class DashboardTabActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent intent=new Intent(getApplicationContext(),AddExamActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -132,22 +137,55 @@ public class DashboardTabActivity2 extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        SevenDaysFragment sevenDaysFragment;
+        ThisDayFragment thisDayFragment;
+        ThisMonthFragment thisMonthFragment;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
+
         @Override
         public Fragment getItem(int position) {
+            if(position==0)
+            {
+                if (sevenDaysFragment == null)
+                   sevenDaysFragment = new SevenDaysFragment();
+                return sevenDaysFragment;
+            }
+            if(position==1)
+            {
+                if (thisDayFragment == null)
+                    thisDayFragment = new ThisDayFragment();
+                return thisDayFragment;
+            }
+            if(position==2)
+            {
+                if (thisMonthFragment == null)
+                   thisMonthFragment = new ThisMonthFragment();
+                return thisMonthFragment;
+            }
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
 
+
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if(position==0)
+                return "ExamListForSevenDays";
+            if(position==1)
+                return "ExamListForThisDay";
+            if(position==2)
+                return "";
+            return "noname";
         }
     }
 }

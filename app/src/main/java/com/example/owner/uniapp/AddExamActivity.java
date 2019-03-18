@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ClipDrawable;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.example.owner.uniapp.dashboard.Exams;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,8 +32,8 @@ public class AddExamActivity extends AppCompatActivity {
     private EditText edExamName;
 
     private Button btnExamDate,btnTimePicker1,btnTimePicker2;
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
-    private TimePickerDialog.OnTimeSetListener timeSetListener1,onTimeSetListener1;
+    //private DatePickerDialog.OnDateSetListener mDateSetListener;
+    //private TimePickerDialog.OnTimeSetListener timeSetListener1,onTimeSetListener1;
     private int mYear,mMonth,mDay;
 
 
@@ -41,19 +50,7 @@ public class AddExamActivity extends AppCompatActivity {
         TvHour2=(TextView)findViewById(R.id.TvHour2);
        tvDate2=(TextView)findViewById(R.id.tvDate2);
         edExamName=(EditText)findViewById(R.id.edExamName);
-        btnExamDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar=Calendar.getInstance();
-                int year= calendar.get(calendar.YEAR);
-                int month= calendar.get(calendar.MONTH);
-                int day= calendar.get(calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog=new DatePickerDialog(AddExamActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
-               //todo ClipDrawable
-                // dialog.getWindow().setBackgroundDrawable(new ClipDrawable(Color.TRANSPARENT));
-                dialog.show();
-            }
-        });
+
         btnTimePicker1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +114,37 @@ public class AddExamActivity extends AppCompatActivity {
         };
     }
     private void dataHandler() {
+        boolean isok=true;
         String ExamName=edExamName.getText().toString();
+        if(ExamName.length()==0){
+            edExamName.setError("Name can not be empty");
+            isok=false;
+        }
+        if(isok){
+            Exams exams=new Exams();
+            exams.setExamDate(Exam);
+            exams.setExamStartHour(ExamStartHour);
+            exams.setExamEndHour(ExamEndHour);
+            exams.setExamName(ExamName);
+            //get user email to set is as the owner fo this exam
+            FirebaseAuth auth=FirebaseAuth.getInstance();
+            //to get the database root reference
+            DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+            //to get uid
+            String key=reference.child("MyExams").push().getKey();
+            exams.setKey(key);
+            reference.child("My Exams").child(key).setValue(exams).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(AddExamActivity.this,"Add Successful",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(AddExamActivity.this,"Add Faild"+task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            });
+        }
 
     }
     public void onClick(View v) {
@@ -141,7 +168,7 @@ public class AddExamActivity extends AppCompatActivity {
                             c.set(Calendar.MONTH,monthOfYear);
                             c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
 
-                            edExamName.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            tvDate2.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                         }
                     }, mYear, mMonth, mDay);

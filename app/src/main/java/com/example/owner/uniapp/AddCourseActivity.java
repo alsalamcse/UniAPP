@@ -64,6 +64,7 @@ public class AddCourseActivity extends AppCompatActivity {
                 int hour= c.get(Calendar.HOUR_OF_DAY);
                 int minute=c.get(Calendar.MINUTE);
                 TimePickerDialog dialog4=new TimePickerDialog(AddCourseActivity.this,timeSetListener3,hour,minute, true);
+
                 //todo ClipDrawable
                 // dialog.getWindow().setBackgroundDrawable(new ClipDrawable(Color.TRANSPARENT));
                 dialog4.show();
