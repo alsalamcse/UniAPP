@@ -1,6 +1,16 @@
 package com.example.owner.uniapp;
 
 public class Courses {
+    private String Key;
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
+    }
+
     private String CourseName;
     private String CourseDay;
     private int StartHour;

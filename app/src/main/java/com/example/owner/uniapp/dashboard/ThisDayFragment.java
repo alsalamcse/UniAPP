@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.owner.uniapp.R;
 import com.example.owner.uniapp.dashboard.dummy.DummyContent;
 import com.example.owner.uniapp.dashboard.dummy.DummyContent.DummyItem;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,7 @@ public class ThisDayFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    ThisDayAdapter thisDayAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -83,16 +85,20 @@ public class ThisDayFragment extends Fragment {
     }
     private List<Exams>readTask()
     {
+
         final ArrayList<Exams> exams=new ArrayList<>();
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         reference.child("exams").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
                     Exams exams1=dataSnapshot1.getValue(Exams.class);
                     exams.add(exams1);
 
                 }
+                thisDayAdapter.notifyDataSetChanged();
+
             }
 
             @Override

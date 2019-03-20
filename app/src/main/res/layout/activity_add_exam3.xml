@@ -22,14 +22,12 @@
     <ImageView
         android:id="@+id/img2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="44dp"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="69dp"
         android:layout_marginEnd="11dp"
         android:layout_marginRight="11dp"
-        android:layout_marginBottom="117dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvExamHour1"
         app:layout_constraintEnd_toStartOf="@+id/edExamName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -65,86 +63,93 @@
     <TextView
         android:id="@+id/tvDate2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="351dp"
-        android:text="Exam Date:"
+        android:layout_height="71dp"
+        android:layout_marginBottom="356dp"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnExamDate"
-        app:layout_constraintStart_toStartOf="@+id/img2"
-        app:layout_constraintTop_toBottomOf="@+id/img2" />
-
-    <TextView
-        android:id="@+id/tvExamHour1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="223dp"
-        android:layout_marginBottom="114dp"
-        android:text="Exam Start Hour:"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="casual"
-        app:layout_constraintBottom_toTopOf="@+id/btnTimePicker2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/img2" />
 
     <Button
         android:id="@+id/btnTimePicker1"
         android:layout_width="243dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:text="Pick a StartHour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvExamHour1" />
-
-    <TextView
-        android:id="@+id/TvHour2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="8dp"
-        android:text="Exam End Hour:"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="casual"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTimePicker1" />
+        app:layout_constraintTop_toBottomOf="@+id/ed1" />
 
     <Button
         android:id="@+id/btnTimePicker2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="67dp"
         android:layout_marginLeft="67dp"
         android:layout_marginEnd="67dp"
         android:layout_marginRight="67dp"
-        android:layout_marginBottom="97dp"
+        android:layout_marginBottom="124dp"
         android:text="PiCK A ENDHour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvExamHour1" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvSave"
         android:layout_width="78dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:text="Save"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
         app:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate2" />
+
+    <EditText
+        android:id="@+id/ed3"
+        android:layout_width="377dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="EndHour"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTimePicker2" />
+
+    <EditText
+        android:id="@+id/ed2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="StartHour"
+        android:inputType="textAutoComplete|textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/btnTimePicker2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -4,19 +4,7 @@ public class Exams {
 
     private String Key;
     private String ExamName;
-    private int ExamDate;
-    private int ExamStartHour;
-    private int ExamEndHour;
-    public Exams(){
-
-    }
-    public int getExamEndHour() {
-        return ExamEndHour;
-    }
-
-    public void setExamEndHour(int examEndHour) {
-        ExamEndHour = examEndHour;
-    }
+    private String ExamDate;
 
     public String getExamName() {
         return ExamName;
@@ -26,20 +14,34 @@ public class Exams {
         ExamName = examName;
     }
 
-    public int getExamDate() {
+    public String getExamDate() {
         return ExamDate;
     }
 
-    public void setExamDate(int examDate) {
+    public void setExamDate(String examDate) {
         ExamDate = examDate;
     }
 
-    public int getExamStartHour() {
+    public String getExamStartHour() {
         return ExamStartHour;
     }
 
-    public void setExamStartHour(int examHour) {
-        ExamStartHour = examHour;
+    public void setExamStartHour(String examStartHour) {
+        ExamStartHour = examStartHour;
+    }
+
+    public String getExamEndHour() {
+        return ExamEndHour;
+    }
+
+    public void setExamEndHour(String examEndHour) {
+        ExamEndHour = examEndHour;
+    }
+
+    private String ExamStartHour;
+    private String ExamEndHour;
+    public Exams(){
+
     }
 
 

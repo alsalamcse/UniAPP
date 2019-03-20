@@ -27,6 +27,14 @@
 
         </android.support.v7.widget.Toolbar>
 
+        <ImageView
+            android:id="@+id/ImDashBoarrd"
+            android:layout_width="86dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            app:srcCompat="@drawable/ic_developer_board_black_24dp" />
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
@@ -36,19 +44,19 @@
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_1" />
+                android:text="Month Calender" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
+                android:text="This Week" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_3" />
+                android:text="This Day" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

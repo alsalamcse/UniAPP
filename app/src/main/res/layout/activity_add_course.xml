@@ -54,22 +54,30 @@
         android:id="@+id/rdSunday"
         android:layout_width="79dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="264dp"
-        android:layout_marginRight="264dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginEnd="288dp"
+        android:layout_marginRight="288dp"
+        android:layout_marginBottom="4dp"
         android:text="Sunday"
+        app:layout_constraintBottom_toTopOf="@+id/rdMonday"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edCourseName" />
 
     <CheckBox
         android:id="@+id/rdMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="19dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="264dp"
-        android:layout_marginRight="264dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginRight="284dp"
         android:text="Monday"
+        app:layout_constraintBottom_toTopOf="@+id/rdTuesday"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdSunday" />
 
     <CheckBox
@@ -84,7 +92,11 @@
         android:id="@+id/rdWensday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="276dp"
+        android:layout_marginRight="276dp"
         android:text="Wensday"
+        app:layout_constraintBottom_toTopOf="@+id/rdThursday"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/rdTuesday"
         app:layout_constraintTop_toBottomOf="@+id/rdTuesday" />
 
@@ -92,7 +104,12 @@
         android:id="@+id/rdThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="275dp"
+        android:layout_marginRight="275dp"
+        android:layout_marginBottom="21dp"
         android:text="Thursday"
+        app:layout_constraintBottom_toTopOf="@+id/imgHour1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/rdWensday"
         app:layout_constraintTop_toBottomOf="@+id/rdWensday" />
 
@@ -100,12 +117,15 @@
         android:id="@+id/btnSaveCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="125dp"
-        android:layout_marginRight="125dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginRight="136dp"
         android:layout_marginBottom="6dp"
         android:text="SaveCourse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <ImageButton

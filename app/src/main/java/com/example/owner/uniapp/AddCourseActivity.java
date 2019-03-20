@@ -3,18 +3,26 @@ package com.example.owner.uniapp;
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.owner.uniapp.dashboard.DashboardTabActivity;
 import com.example.owner.uniapp.dashboard.DashboardTabActivity2;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -22,7 +30,7 @@ public class AddCourseActivity extends AppCompatActivity {
     private TextView tvAddCourse;
     private ImageButton imgPen,imgDay,imgHour1,imgHour2;
     private EditText edCourseName;
-    private RadioButton rdSunday,rdMonday,rdTuesday,rdWensday,rdThursday;
+    private CheckBox rdSunday,rdMonday,rdTuesday,rdWensday,rdThursday;
     private Button btnSaveCourse,btn1,btn2;
     private TimePickerDialog.OnTimeSetListener timeSetListener2,timeSetListener3;
 
@@ -37,11 +45,11 @@ public class AddCourseActivity extends AppCompatActivity {
         imgPen=(ImageButton) findViewById(R.id.imgPen);
         imgHour1=(ImageButton) findViewById(R.id.imgHour1);
         imgHour2=(ImageButton) findViewById(R.id.imgHour2);
-        rdSunday=(RadioButton) findViewById(R.id.rdSunday);
-        rdMonday=(RadioButton) findViewById(R.id.rdMonday);
-        rdTuesday=(RadioButton) findViewById(R.id.rdTuesday);
-        rdWensday=(RadioButton) findViewById(R.id.rdWensday);
-        rdThursday=(RadioButton) findViewById(R.id.rdThursday);
+        rdSunday=(CheckBox) findViewById(R.id.rdSunday);
+        rdMonday=(CheckBox) findViewById(R.id.rdMonday);
+        rdTuesday=(CheckBox) findViewById(R.id.rdTuesday);
+        rdWensday=(CheckBox) findViewById(R.id.rdWensday);
+        rdThursday=(CheckBox) findViewById(R.id.rdThursday);
         btn1=(Button) findViewById(R.id.btn1);
         btn2=(Button) findViewById(R.id.btn2);
        btn1.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +82,8 @@ public class AddCourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dataHandler();
-                Intent intent = new Intent(AddCourseActivity.this,DashboardTabActivity2.class);
-                startActivity(intent);
+               Intent intent = new Intent(AddCourseActivity.this,DashboardTabActivity2.class);
+               startActivity(intent);
 
 
             }
@@ -98,7 +106,39 @@ public class AddCourseActivity extends AppCompatActivity {
     }
 
     private void dataHandler() {
+        boolean isok=true;
         String name=edCourseName.getText().toString();
+        if(name.length()==0){
+            edCourseName.setError("Title can not be empty");
+            isok=false;
+        }
+        if(isok){
+            Courses courses=new Courses();
+            courses.setCourseName(name);
+            FirebaseAuth auth=FirebaseAuth.getInstance();
+            courses.setCourseName(auth.getCurrentUser().getEmail());
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+            String key=reference.child("My Courses").push().getKey();
+            courses.setKey(key);
+            reference.child("My Courses").child(key).setValue(courses).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(AddCourseActivity.this, "Add Successful", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(AddCourseActivity.this, "Add Faild", Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            });
+
+
+
+        }
+
 
     }
 
