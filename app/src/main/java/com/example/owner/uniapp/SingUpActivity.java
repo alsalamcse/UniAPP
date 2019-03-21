@@ -87,7 +87,7 @@ public class SingUpActivity extends AppCompatActivity {
                     Toast.makeText(SingUpActivity.this,"Authentication successful",Toast.LENGTH_SHORT).show();
                     //updateUserProfile(task.getResult().getUser();
                     finish();
-                    Intent intent=new Intent(SingUpActivity.this,AddCourseActivity.class);
+                    Intent intent=new Intent(SingUpActivity.this,AddExamActivity.class);
                     startActivity(intent);
                 }
                 else {

@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.owner.uniapp.AddExamActivity;
-import com.example.owner.uniapp.MyCoursesList;
 import com.example.owner.uniapp.R;
 
 public class DashboardTabActivity2 extends AppCompatActivity {

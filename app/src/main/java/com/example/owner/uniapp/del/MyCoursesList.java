@@ -1,4 +1,4 @@
-package com.example.owner.uniapp;
+package com.example.owner.uniapp.del;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.owner.uniapp.R;
 
 public class MyCoursesList extends AppCompatActivity {
 

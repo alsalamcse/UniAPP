@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.owner.uniapp.dashboard.DashboardTabActivity;
 import com.example.owner.uniapp.dashboard.DashboardTabActivity2;
+import com.example.owner.uniapp.new1.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApiNotAvailableException;
@@ -38,6 +39,7 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         dataHandler();
+
                     }
                 });
 
@@ -78,7 +80,7 @@ public class SignInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(SignInActivity.this, "signIn successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignInActivity.this,DashboardTabActivity2.class);
+                            Intent intent = new Intent(SignInActivity.this,MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {

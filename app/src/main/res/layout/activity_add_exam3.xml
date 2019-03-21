@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvAddExam"
+        android:id="@+id/tvAddEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Add Exam"
+        android:text="Add Event"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -21,30 +21,30 @@
 
     <ImageView
         android:id="@+id/img2"
-        android:layout_width="0dp"
+        android:layout_width="45dp"
         android:layout_height="44dp"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="69dp"
         android:layout_marginEnd="11dp"
         android:layout_marginRight="11dp"
-        app:layout_constraintEnd_toStartOf="@+id/edExamName"
+        app:layout_constraintEnd_toStartOf="@+id/edEventName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <EditText
-        android:id="@+id/edExamName"
-        android:layout_width="279dp"
+        android:id="@+id/edEventName"
+        android:layout_width="298dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
         android:ems="10"
-        android:hint="Exam Tittle"
+        android:hint=" Event Type: exam,H.W,Assingment,Meet"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img2"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddExam" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAddEvent" />
 
     <Button
         android:id="@+id/btnExamDate"
@@ -52,60 +52,18 @@
         android:layout_height="48dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClick"
         android:text="Pick a Date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edExamName" />
-
-    <TextView
-        android:id="@+id/tvDate2"
-        android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="356dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="casual"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnExamDate"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/img2" />
-
-    <Button
-        android:id="@+id/btnTimePicker1"
-        android:layout_width="243dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:text="Pick a StartHour"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed1" />
-
-    <Button
-        android:id="@+id/btnTimePicker2"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="67dp"
-        android:layout_marginLeft="67dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginRight="67dp"
-        android:layout_marginBottom="124dp"
-        android:text="PiCK A ENDHour"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edEventName" />
 
     <TextView
         android:id="@+id/tvSave"
         android:layout_width="78dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="Save"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
@@ -119,38 +77,90 @@
         android:id="@+id/ed1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginBottom="46dp"
         android:ems="10"
         android:hint="Date"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDate2" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="64dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/edCourseTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <EditText
-        android:id="@+id/ed3"
-        android:layout_width="377dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:id="@+id/edCourseTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="4dp"
         android:ems="10"
-        android:hint="EndHour"
+        android:hint="Course Title"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTimePicker2" />
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/ed1" />
 
     <EditText
-        android:id="@+id/ed2"
+        android:id="@+id/lecturerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="StartHour"
-        android:inputType="textAutoComplete|textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnTimePicker2"
+        android:hint="Lecturer Name"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="74dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="215dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lecturerName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="?android:attr/actionModePasteDrawable" />
+
+    <EditText
+        android:id="@+id/edFreeText"
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="Free Text"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/lecturerName" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/edFreeText"
+        app:layout_constraintEnd_toStartOf="@+id/edFreeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_mycourses" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.owner.uniapp;
+package com.example.owner.uniapp.del;
 
 public class Courses {
     private String Key;

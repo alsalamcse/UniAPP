@@ -22,9 +22,9 @@
             android:name=".dashboard.DashboardTabActivity"
             android:label="@string/title_activity_dashboard_tab"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddCourseActivity" />
+        <activity android:name=".del.AddCourseActivity" />
         <activity android:name=".AddExamActivity" />
-        <activity android:name=".MyCoursesList" />
+        <activity android:name=".del.MyCoursesList" />
         <activity
             android:name=".dashboard.DashboardTabActivity2"
             android:label="@string/title_activity_dashboard_tab2"
@@ -38,7 +38,8 @@
         <activity
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".new1.MainActivity"></activity>
     </application>
 
 </manifest>

@@ -3,12 +3,9 @@ package com.example.owner.uniapp;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.owner.uniapp.dashboard.DashboardTabActivity2;
 import com.example.owner.uniapp.dashboard.Exams;
+import com.example.owner.uniapp.new1.MainActivity;
+import com.example.owner.uniapp.new1.StudentEvent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,19 +25,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddExamActivity extends AppCompatActivity {
+    private static String[]Type=new String[]{"Exam","HomeWork","Assingment","Meet"};
+
     private static final String TAG = "AddExamActivity";
-    private TextView tvAddExam, tvExamHour1, TvHour2, tvDate2, tvSave;
-    private EditText edExamName, ed1, ed2, ed3;
+    private TextView tvAddEvent, tvDate2, tvSave;
+    private EditText edEventName,ed1,edCourseTitle,lecturerName,edFreeText;
 
     private Button btnExamDate, btnTimePicker1, btnTimePicker2;
     //private DatePickerDialog.OnDateSetListener mDateSetListener;
     private TimePickerDialog.OnTimeSetListener timeSetListener1, onTimeSetListener1;
     private int mYear, mMonth, mDay;
-    private int mhour, mmunite;
-    private int HourOfTheDay, Minute;
+    //private int mhour, mmunite;
+    //private int HourOfTheDay, Minute;
 
 
     @Override
@@ -47,25 +47,29 @@ public class AddExamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_exam3);
 
         btnExamDate = (Button) findViewById(R.id.btnExamDate);
-        btnTimePicker1 = (Button) findViewById(R.id.btnTimePicker1);
-        btnTimePicker2 = (Button) findViewById(R.id.btnTimePicker2);
-        tvAddExam = (TextView) findViewById(R.id.tvAddExam);
+        //btnTimePicker1 = (Button) findViewById(R.id.btnTimePicker1);
+       // btnTimePicker2 = (Button) findViewById(R.id.btnTimePicker2);
+        tvAddEvent= (TextView) findViewById(R.id.tvAddEvent);
         tvSave = (TextView) findViewById(R.id.tvSave);
         //tvExamHour1 = (TextView) findViewById(R.id.tvExamHour1);
 //        TvHour2 = (TextView) findViewById(R.id.TvHour2);
-        tvDate2 = (TextView) findViewById(R.id.tvDate2);
-        edExamName = (EditText) findViewById(R.id.edExamName);
+        //tvDate2 = (TextView) findViewById(R.id.tvDate2);
+        edEventName = (EditText) findViewById(R.id.edEventName);
         ed1 = (EditText) findViewById(R.id.ed1);
-        ed2 = (EditText) findViewById(R.id.ed2);
-        ed3 = (EditText) findViewById(R.id.ed3);
+        edCourseTitle= (EditText) findViewById(R.id.edCourseTitle);
+       lecturerName= (EditText) findViewById(R.id.lecturerName);
+        edFreeText= (EditText) findViewById(R.id.edFreeText);
+
+
+        //ed2 = (EditText) findViewById(R.id.ed2);
+       // ed3 = (EditText) findViewById(R.id.ed3);
 
 
         tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dataHandler();
-                Intent intent = new Intent(AddExamActivity.this,DashboardTabActivity2.class);
-                startActivity(intent);
+
 
             }
         });
@@ -89,36 +93,40 @@ public class AddExamActivity extends AppCompatActivity {
 
     private void dataHandler() {
         boolean isok = true;
-        String ExamName = edExamName.getText().toString();
-        String ExamDate = ed1.getText().toString();
-        String ExamStartHour = ed2.getText().toString();
-        String ExamEndHour = ed3.getText().toString();
-        if (ExamName.length() == 0) {
-            edExamName.setError("Name can not be empty");
+        String Type = edEventName.getText().toString();
+        String CourseTitle = edCourseTitle.getText().toString();
+        String LecturerName=lecturerName.getText().toString();
+        String FreeText=edFreeText.getText().toString();
+        String Time=ed1.getText().toString();
+        if (Type.length() == 0) {
+            edEventName.setError("Name can not be empty");
             isok = false;
         }
         if (isok) {
-            Exams exams = new Exams();
-            exams.setExamDate(ExamDate);
-            exams.setExamStartHour(ExamStartHour);
-            exams.setExamEndHour(ExamEndHour);
-            exams.setExamName(ExamName);
+            final StudentEvent studentEvent=new StudentEvent();
+            studentEvent.setCourseTitle(CourseTitle);
+            studentEvent.setFreeText(FreeText);
+            studentEvent.setLecturerName(LecturerName);
+            studentEvent.setType(Type);
+            studentEvent.setEventTime(Time);
             //get user email to set is as the owner fo this exam
             FirebaseAuth auth = FirebaseAuth.getInstance();
             //to get the database root reference
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             //to get uid
-            String key = reference.child("MyExams").push().getKey();
-            exams.setKey(key);
-            reference.child("My Exams").child(key).setValue(exams).addOnCompleteListener(new OnCompleteListener<Void>() {
+            String key = reference.child("MyEvents").push().getKey();
+            studentEvent.setKey(key);
+            reference.child("MyEvents").child(key).setValue(studentEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
+
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(AddExamActivity.this, "Add Successful", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(AddExamActivity.this,MainActivity.class);
+                        startActivity(intent);
                     } else {
-                        Toast.makeText(AddExamActivity.this, "Add Faild" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddExamActivity.this, "Add Faild" +task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
-
                 }
             });
         }
@@ -153,56 +161,56 @@ public class AddExamActivity extends AppCompatActivity {
             datePickerDialog.show();
         }
 
-        if (v == btnTimePicker1) {
+       // if (v == btnTimePicker1) {
 
             // Get Current Date
-            final Calendar c = Calendar.getInstance();
-            mhour = c.get(Calendar.HOUR);
-            mmunite = c.get(Calendar.MINUTE);
+            //final Calendar c = Calendar.getInstance();
+            //mhour = c.get(Calendar.HOUR);
+          //  mmunite = c.get(Calendar.MINUTE);
             //mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            TimePickerDialog timePickerDialog = new TimePickerDialog(AddExamActivity.this, timeSetListener1, mhour, mmunite, true)
-            {
-                public void onTimeSet (TimePicker View ,int mhour,
-                int mmuntie)
-                {
-                    c.set(Calendar.HOUR, mhour);
-                    c.set(Calendar.MINUTE, mmunite);
+           // TimePickerDialog timePickerDialog = new TimePickerDialog(AddExamActivity.this, timeSetListener1, mhour, mmunite, true)
+           // {
+              //  public void onTimeSet (TimePicker View ,int mhour,
+              //  int mmuntie)
+              //  {
+                //    c.set(Calendar.HOUR, mhour);
+                 //   c.set(Calendar.MINUTE, mmunite);
                     //c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
 
-                    ed2.setText(mhour + "-" + mmuntie + "-");
+                  //  ed2.setText(mhour + "-" + mmuntie + "-");
 
-                }
-            } ;
-            timePickerDialog.show();
-        }
-        if (v == btnTimePicker2) {
+              //  }
+           // } ;
+           // timePickerDialog.show();
+        //}
+        //if (v == btnTimePicker2) {
 
             // Get Current Date
-            final Calendar c = Calendar.getInstance();
-            HourOfTheDay = c.get(Calendar.HOUR);
-            Minute = c.get(Calendar.MINUTE);
+           // final Calendar c = Calendar.getInstance();
+           // HourOfTheDay = c.get(Calendar.HOUR);
+           // Minute = c.get(Calendar.MINUTE);
             //mDay = c.get(Calendar.DAY_OF_MONTH);
 
-            TimePickerDialog timePickerDialog = new TimePickerDialog(AddExamActivity.this, onTimeSetListener1, HourOfTheDay, Minute, true)
+           // TimePickerDialog timePickerDialog = new TimePickerDialog(AddExamActivity.this, onTimeSetListener1, HourOfTheDay, Minute, true)
 
-            {
-                public void onTimeSet (TimePicker View ,int HourOfTheDay, int Minute)
-                {
-                    c.set(Calendar.HOUR, HourOfTheDay);
-                    c.set(Calendar.MINUTE,Minute);
+            //{
+              //  public void onTimeSet (TimePicker View ,int HourOfTheDay, int Minute)
+              //  {
+                  //  c.set(Calendar.HOUR, HourOfTheDay);
+                  //  c.set(Calendar.MINUTE,Minute);
                     //c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
 
-                    ed2.setText(HourOfTheDay + "-" + Minute + "-");
+                   // ed2.setText(HourOfTheDay + "-" + Minute + "-");
 
-                }
+             //   }
 
 
-            };
-            timePickerDialog.show();
+          //  };
+           // timePickerDialog.show();
 
-        }
+       // }
     }
 
 }
