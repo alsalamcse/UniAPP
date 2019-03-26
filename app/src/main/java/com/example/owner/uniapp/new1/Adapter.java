@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,13 +15,6 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
         super(context, resource);
     }
 
-    //public class TaskAdapter extends ArrayAdapter<StudentEvent>
-    //{
-
-
-       // public TaskAdapter(Context context, int resource) {
-          //  super(context, resource);
-        //}
 
 
         @Override
@@ -32,11 +24,11 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
                 convertView=LayoutInflater.from(getContext()).inflate(R.layout.studentevent_item,parent,false);
           StudentEvent studentEvent=getItem(position);//return data object number " posotion "
 
-            EditText edEventName1=convertView.findViewById(R.id.edEventName1);
-            EditText edCourseTitle1=convertView.findViewById(R.id. edCourseTitle1);
-           EditText ed12 =convertView.findViewById(R.id.ed12);
-           EditText edFreeText1=convertView.findViewById(R.id.edFreeText1);
-            EditText LecturerName1=convertView.findViewById(R.id.LecturerName1);
+           TextView edEventName1=convertView.findViewById(R.id.edEventName1);
+            TextView edCourseTitle1=convertView.findViewById(R.id. edCourseTitle1);
+           TextView ed112 =convertView.findViewById(R.id.ed112);
+          TextView edFreeText1=convertView.findViewById(R.id.edFreeText1);
+           TextView LecturerName1=convertView.findViewById(R.id.LecturerName1);
            // EditText LecturerName=convertView.findViewById(R.id.lecturerName);
            /// EditText LecturerName=convertView.findViewById(R.id.lecturerName);
 
@@ -44,12 +36,10 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
 
             //ImageButton ibPicture=convertView.findViewById(R.id.ibPicture);
             TextView TvSave=convertView.findViewById(R.id.tvSave);
-
             // put the data of the object on the view
             edEventName1.setText(studentEvent.getType());
-            edCourseTitle1.setText(studentEvent.getCourseTitle()
-            );
-            ed12.setText(studentEvent.getEventTime());
+            edCourseTitle1.setText(studentEvent.getCourseTitle());
+            ed112.setText(studentEvent.getEventTime());
             edFreeText1.setText(studentEvent.getFreeText());
             LecturerName1.setText(studentEvent.getLecturerName());
 

@@ -27,7 +27,6 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
     private ListView EventList;
     private Adapter adapter;
-    private ArrayAdapter<StudentEvent> studentEventArrayAdapter;
 
     private Button AddExam1;
 
