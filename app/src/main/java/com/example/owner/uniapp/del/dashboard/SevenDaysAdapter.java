@@ -1,4 +1,4 @@
-package com.example.owner.uniapp.dashboard;
+package com.example.owner.uniapp.del.dashboard;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.owner.uniapp.R;
-import com.example.owner.uniapp.dashboard.SevenDaysFragment.OnListFragmentInteractionListener;
-import com.example.owner.uniapp.dashboard.dummy.DummyContent.DummyItem;
+import com.example.owner.uniapp.del.dashboard.SevenDaysFragment.OnListFragmentInteractionListener;
+import com.example.owner.uniapp.del.dashboard.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 

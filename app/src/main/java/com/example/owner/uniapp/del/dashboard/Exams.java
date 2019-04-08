@@ -1,4 +1,4 @@
-package com.example.owner.uniapp.dashboard;
+package com.example.owner.uniapp.del.dashboard;
 
 public class Exams {
 

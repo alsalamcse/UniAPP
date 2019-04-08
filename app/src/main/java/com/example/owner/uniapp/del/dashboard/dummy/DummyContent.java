@@ -1,4 +1,4 @@
-package com.example.owner.uniapp.dashboard.dummy;
+package com.example.owner.uniapp.del.dashboard.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

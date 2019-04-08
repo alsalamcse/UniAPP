@@ -20,7 +20,7 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            if(convertView==null)
+          //  if(convertView==null)
                 convertView=LayoutInflater.from(getContext()).inflate(R.layout.studentevent_item,parent,false);
           StudentEvent studentEvent=getItem(position);//return data object number " posotion "
 

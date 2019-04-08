@@ -1,7 +1,5 @@
-package com.example.owner.uniapp.dashboard;
+package com.example.owner.uniapp.del.dashboard;
 
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +18,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.example.owner.uniapp.AddExamActivity;
 import com.example.owner.uniapp.R;
 
-public class DashboardTabActivity2 extends AppCompatActivity {
+public class DashboardTabActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -43,7 +40,7 @@ public class DashboardTabActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard_tab2);
+        setContentView(R.layout.activity_dashboard_tab);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,20 +52,13 @@ public class DashboardTabActivity2 extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent intent=new Intent(getApplicationContext(),AddExamActivity.class);
-                startActivity(intent);
-          }
+            }
         });
 
     }
@@ -77,7 +67,7 @@ public class DashboardTabActivity2 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_dashboard_tab_activity2, menu);
+        getMenuInflater().inflate(R.menu.menu_dashboard_tab, menu);
         return true;
     }
 
@@ -99,7 +89,31 @@ public class DashboardTabActivity2 extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -124,7 +138,7 @@ public class DashboardTabActivity2 extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_dashboard_tab_activity2, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_dashboard_tab, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -136,55 +150,22 @@ public class DashboardTabActivity2 extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        SevenDaysFragment sevenDaysFragment;
-        ThisDayFragment thisDayFragment;
-        ThisMonthFragment thisMonthFragment;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-
         @Override
         public Fragment getItem(int position) {
-            if(position==0)
-            {
-                if (sevenDaysFragment == null)
-                   sevenDaysFragment = new SevenDaysFragment();
-                return sevenDaysFragment;
-            }
-            if(position==1)
-            {
-                if (thisDayFragment == null)
-                    thisDayFragment = new ThisDayFragment();
-                return thisDayFragment;
-            }
-            if(position==2)
-            {
-                if (thisMonthFragment == null)
-                   thisMonthFragment = new ThisMonthFragment();
-                return thisMonthFragment;
-            }
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
 
-
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
-        }
-        @Override
-        public CharSequence getPageTitle(int position) {
-            if(position==0)
-                return "ExamListForSevenDays";
-            if(position==1)
-                return "ExamListForThisDay";
-            if(position==2)
-                return "";
-            return "noname";
         }
     }
 }

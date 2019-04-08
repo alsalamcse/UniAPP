@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.owner.uniapp.AddExamActivity;
 import com.example.owner.uniapp.R;
 import com.example.owner.uniapp.SignInActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,14 +57,18 @@ public class MainActivity extends AppCompatActivity {
     }
     private void getAllEvent(){
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
-        reference.child("MyEvents").addValueEventListener(new ValueEventListener() {
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        reference.child("MyEvents").child(auth.getUid()).orderByChild("EventTime").addValueEventListener(new ValueEventListener() {
 
             @Override
+
+
+
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 adapter.clear();
                 for (DataSnapshot d:dataSnapshot.getChildren())
                 {
-                    StudentEvent event = dataSnapshot.getValue(StudentEvent.class);
+                    StudentEvent event = d.getValue(StudentEvent.class);
                     dataSnapshot.getValue(StudentEvent.class);
                     adapter.add(event);
 //                  StudentEvent studentEvent=d.getValue(StudentEvent.class);

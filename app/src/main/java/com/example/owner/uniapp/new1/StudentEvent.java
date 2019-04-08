@@ -15,7 +15,7 @@ public class StudentEvent {
    private String CourseTitle;
    private String LecturerName;
    private String FreeText;
-   private String EventTime;
+   private long EventTime;
 
     public String getType() {
         return Type;
@@ -49,11 +49,11 @@ public class StudentEvent {
         FreeText = freeText;
     }
 
-    public String getEventTime() {
+    public long getEventTime() {
         return EventTime;
     }
 
-    public void setEventTime(String eventTime) {
+    public void setEventTime(long eventTime) {
         EventTime = eventTime;
     }
 
