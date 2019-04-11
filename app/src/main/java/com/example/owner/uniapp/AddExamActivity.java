@@ -2,7 +2,9 @@ package com.example.owner.uniapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.app.usage.UsageEvents;
 import android.content.Intent;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,10 +22,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.events.Event;
 
 import java.util.Calendar;
+import java.util.EventListener;
 
 public class AddExamActivity extends AppCompatActivity {
+    CalendarContract calendarContract;
     private static String[]Type=new String[]{"Exam","HomeWork","Assingment","Meet"};
 
     private static final String TAG = "AddExamActivity";
@@ -96,9 +101,28 @@ public class AddExamActivity extends AppCompatActivity {
                     }
                 }
             });
+           // public void onAddEventClicked(View view) {
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setType("vnd.android.cursor.item/event");
+
+                Calendar cal = Calendar.getInstance();
+
+
+                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time);
+                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time);
+                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+
+                intent.putExtra(CalendarContract.Events.TITLE,CourseTitle);
+                intent.putExtra(CalendarContract.Events.DESCRIPTION,FreeText );
+                //intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "My Guest House");
+                intent.putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
+
+                startActivity(intent);
+            }
+
         }
 
-    }
+
 
     public void onClick(View v) {
 
@@ -130,6 +154,7 @@ public class AddExamActivity extends AppCompatActivity {
 
 
     }
+
 
 }
 
