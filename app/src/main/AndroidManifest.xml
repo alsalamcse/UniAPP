@@ -40,7 +40,6 @@
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".new1.MainActivity" />
-        <activity android:name=".CalendarActivity"></activity>
     </application>
 
 </manifest>

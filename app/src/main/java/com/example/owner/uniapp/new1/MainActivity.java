@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private void getAllEvent(){
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth=FirebaseAuth.getInstance();
-        reference.child("MyEvents").child(auth.getUid()).orderByChild("EventTime").addValueEventListener(new ValueEventListener() {
+        reference.child("MyEvents").child(auth.getUid()).orderByChild("eventTime").addValueEventListener(new ValueEventListener() {
 
             @Override
 

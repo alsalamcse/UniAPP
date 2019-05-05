@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.owner.uniapp.R;
+import com.google.firebase.database.DatabaseReference;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Adapter extends ArrayAdapter<StudentEvent> {
     public Adapter(Context context, int resource) {
@@ -39,7 +43,11 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
             // put the data of the object on the view
             edEventName1.setText(studentEvent.getType());
             edCourseTitle1.setText(studentEvent.getCourseTitle());
-            ed112.setText(studentEvent.getEventTime());
+            Date date=new Date();
+            date.setTime(studentEvent.getEventTime());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+            ed112.setText(format.format(date));
             edFreeText1.setText(studentEvent.getFreeText());
             LecturerName1.setText(studentEvent.getLecturerName());
 
