@@ -1,62 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/edEventName1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
-        android:text="EventType:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/edCourseTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="76dp"
-        android:text="Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edEventName1" />
+        <TextView
+            android:id="@+id/edEventName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EventType:" />
 
-    <TextView
-        android:id="@+id/ed112"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="Date:"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="50dp" />
+        <TextView
+            android:id="@+id/ed112"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date:" />
 
-    <TextView
-        android:id="@+id/LecturerName1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:text="LecturerName:"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="4dp" />
+        <TextView
+            android:id="@+id/lectureName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LectureName:" />
 
-    <TextView
-        android:id="@+id/edFreeText1"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="80dp"
-        android:text="FreeText:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LecturerName1" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/edCourseTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title" />
+
+        <TextView
+            android:id="@+id/edFreeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FreeText:" />
+    </LinearLayout>
+</LinearLayout>

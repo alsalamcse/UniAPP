@@ -1,4 +1,4 @@
-package com.example.owner.uniapp.new1;
+package com.example.owner.uniapp.data;
 
 public class StudentEvent {
     private String Key;

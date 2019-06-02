@@ -2,7 +2,6 @@ package com.example.owner.uniapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.app.usage.UsageEvents;
 import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
@@ -16,16 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.owner.uniapp.new1.MainActivity;
-import com.example.owner.uniapp.new1.StudentEvent;
+import com.example.owner.uniapp.data.StudentEvent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.events.Event;
 
 import java.util.Calendar;
-import java.util.EventListener;
 
 public class AddExamActivity extends AppCompatActivity {
     CalendarContract calendarContract;

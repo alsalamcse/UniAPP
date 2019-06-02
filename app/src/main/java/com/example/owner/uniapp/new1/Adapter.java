@@ -5,11 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.owner.uniapp.R;
-import com.google.firebase.database.DatabaseReference;
+import com.example.owner.uniapp.data.StudentEvent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
