@@ -50,7 +50,7 @@ public class AddExamActivity extends AppCompatActivity {
         ed1 = (EditText) findViewById(R.id.ed1);
         edCourseTitle= (EditText) findViewById(R.id.edCourseTitle);
        lecturerName= (EditText) findViewById(R.id.lecturerName);
-        edFreeText= (EditText) findViewById(R.id.edFreeText);
+        edFreeText= (EditText) findViewById(R.id.edFreeText1);
         tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

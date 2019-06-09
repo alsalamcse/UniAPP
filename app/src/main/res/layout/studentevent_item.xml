@@ -23,7 +23,7 @@
             android:text="Date:" />
 
         <TextView
-            android:id="@+id/lectureName1"
+            android:id="@+id/LecturerName1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LectureName:" />
@@ -35,7 +35,7 @@
             android:text="Title" />
 
         <TextView
-            android:id="@+id/edFreeText"
+            android:id="@+id/edFreeText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="FreeText:" />

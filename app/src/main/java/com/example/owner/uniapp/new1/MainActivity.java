@@ -1,15 +1,18 @@
 package com.example.owner.uniapp.new1;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.owner.uniapp.AddExamActivity;
+import com.example.owner.uniapp.CalendarQuickStartNew;
 import com.example.owner.uniapp.R;
 import com.example.owner.uniapp.data.StudentEvent;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Adapter adapter;
 
     private Button AddExam1;
+    private ImageButton image4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         EventList=(ListView)findViewById(R.id.EventList) ;
         AddExam1=(Button)findViewById(R.id.AddExam1);
+       image4=(ImageButton)findViewById(R.id.image4);
 
 
         adapter = new Adapter(getBaseContext(),R.layout.studentevent_item);
@@ -45,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+            }
+        });
+        image4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,CalendarActivity.class);
+                startActivity(intent);
             }
         });
 
