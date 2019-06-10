@@ -18,29 +18,15 @@
         </activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".SingUpActivity" />
-        <activity
-            android:name=".del.dashboard.DashboardTabActivity"
-            android:label="@string/title_activity_dashboard_tab"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".del.AddCourseActivity" />
         <activity android:name=".AddExamActivity" />
         <activity android:name=".del.MyCoursesList" />
-        <activity
-            android:name=".del.dashboard.DashboardTabActivity2"
-            android:label="@string/title_activity_dashboard_tab2"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".new1.MainActivity" />
         <activity android:name=".CalendarQuickStartNew"></activity>
+        <activity android:name=".CalendarActivity"/>
     </application>
 
 </manifest>

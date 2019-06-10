@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.owner.uniapp.AddExamActivity;
+import com.example.owner.uniapp.CalendarActivity;
 import com.example.owner.uniapp.CalendarQuickStartNew;
 import com.example.owner.uniapp.R;
 import com.example.owner.uniapp.data.StudentEvent;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         EventList=(ListView)findViewById(R.id.EventList) ;
         AddExam1=(Button)findViewById(R.id.AddExam1);
        image4=(ImageButton)findViewById(R.id.image4);
+       Intent incomingIntent=getIntent();
 
 
         adapter = new Adapter(getBaseContext(),R.layout.studentevent_item);

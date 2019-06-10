@@ -17,7 +17,7 @@
         android:layout_marginBottom="3dp"
         app:layout_constraintBottom_toTopOf="@+id/AddExam1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,8 +37,11 @@
         android:id="@+id/image4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="312dp"
+        android:layout_marginLeft="312dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/EventList"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        tools:srcCompat="@android:drawable/ic_menu_month" />
 
 </android.support.constraint.ConstraintLayout>
