@@ -79,12 +79,14 @@ public class MainActivity extends AppCompatActivity {
                     StudentEvent event = d.getValue(StudentEvent.class);
                     dataSnapshot.getValue(StudentEvent.class);
                     adapter.add(event);
+
+
+
 //                  StudentEvent studentEvent=d.getValue(StudentEvent.class);
 
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MainActivity.this, "onCancelled", Toast.LENGTH_SHORT).show();

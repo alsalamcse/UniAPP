@@ -36,14 +36,14 @@ public class CalendarActivity extends AppCompatActivity {
         calendarView = ((MCalendarView) findViewById(R.id.calendar_exp));
 
 
-        ArrayList<DateData> dates=new ArrayList<>();
+                ArrayList<DateData> dates=new ArrayList<>();
         dates.add(new DateData(2019,06,26));
         dates.add(new DateData(2019,06,27));
 
         for(int i=0;i<dates.size();i++) {
-            calendarView.markDate(dates.get(i).getYear(),dates.get(i).getMonth(),dates.get(i).getDay());//mark multiple dates with this code.
+           // calendarView.markDate(dates.get(i).getYear(),dates.get(i).getMonth(),dates.get(i).getDay());//mark multiple dates with this code.
         }
-
+        getAllEvent();
 
         Log.d("marked dates:-",""+calendarView.getMarkedDates());//get all marked dates.
     }
@@ -64,6 +64,12 @@ public class CalendarActivity extends AppCompatActivity {
                     dataSnapshot.getValue(StudentEvent.class);
                    // adapter.add(event);
                     Date date=new Date(event.getEventTime());
+                    //calendarView.add(calendarView.Date, -1);
+                    //calendarView.setDateSelected(calendarView.getTime(), true);
+                    //calendarView.setDateSelected(calendarView.get(), true);
+                    //.setDateSelected(calendarView.from(2017, 3, 19), true);
+                    //long x =new x()
+
                     calendarView.markDate(date.getYear(),date.getMonth(),date.getDay());//mark multiple dates with this code.
 
 //                  StudentEvent studentEvent=d.getValue(StudentEvent.class);

@@ -5,10 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.owner.uniapp.R;
 import com.example.owner.uniapp.data.StudentEvent;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,13 +29,14 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
 
           //  if(convertView==null)
                 convertView=LayoutInflater.from(getContext()).inflate(R.layout.studentevent_item,parent,false);
-          StudentEvent studentEvent=getItem(position);//return data object number " posotion "
+          final StudentEvent studentEvent=getItem(position);//return data object number " posotion "
 
            TextView edEventName1=convertView.findViewById(R.id.edEventName1);
             TextView edCourseTitle1=convertView.findViewById(R.id. edCourseTitle1);
            TextView ed112 =convertView.findViewById(R.id.ed112);
           TextView edFreeText1=convertView.findViewById(R.id.edFreeText1);
            TextView LecturerName1=convertView.findViewById(R.id.LecturerName1);
+            Button btnDel=convertView.findViewById(R.id.btnDel);
            // EditText LecturerName=convertView.findViewById(R.id.lecturerName);
            /// EditText LecturerName=convertView.findViewById(R.id.lecturerName);
 
@@ -56,6 +61,21 @@ public class Adapter extends ArrayAdapter<StudentEvent> {
             // Toast.makeText(getContext(),"Del",Toast.LENGTH_SHORT).show();
               //  }
           // });
+            btnDel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                    //to get the database root reference
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+
+                    reference.child("MyEvents").child(auth.getUid()).child(studentEvent.getKey()).removeValue();
+
+
+                }
+            });
+
+
 
 
 

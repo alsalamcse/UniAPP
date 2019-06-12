@@ -98,6 +98,7 @@ public class AddExamActivity extends AppCompatActivity {
                     }
                 }
             });
+
            // public void onAddEventClicked(View view) {
                 Intent intent = new Intent(Intent.ACTION_INSERT);
                 intent.setType("vnd.android.cursor.item/event");
