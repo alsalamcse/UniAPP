@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import sun.bob.mcalendarview.MCalendarView;
@@ -58,6 +59,8 @@ public class CalendarActivity extends AppCompatActivity {
 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                calendarView.markDate(2019,6,17);//mark multiple dates with this code.
+
                 for (DataSnapshot d:dataSnapshot.getChildren())
                 {
                     StudentEvent event = d.getValue(StudentEvent.class);
@@ -69,8 +72,9 @@ public class CalendarActivity extends AppCompatActivity {
                     //calendarView.setDateSelected(calendarView.get(), true);
                     //.setDateSelected(calendarView.from(2017, 3, 19), true);
                     //long x =new x()
-
-                    calendarView.markDate(date.getYear(),date.getMonth(),date.getDay());//mark multiple dates with this code.
+                    Calendar calendar=Calendar.getInstance();
+                    calendar.setTimeInMillis(event.getEventTime());
+                    calendarView.markDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)+1,calendar.get(Calendar.DAY_OF_MONTH));//mark multiple dates with this code.
 
 //                  StudentEvent studentEvent=d.getValue(StudentEvent.class);
 

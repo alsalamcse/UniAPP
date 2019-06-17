@@ -62,9 +62,9 @@ public class AddExamActivity extends AppCompatActivity {
     private void dataHandler() {
         boolean isok = true;
         String Type = edEventName.getText().toString();
-        String CourseTitle = edCourseTitle.getText().toString();
+        final String CourseTitle = edCourseTitle.getText().toString();
         String LecturerName=lecturerName.getText().toString();
-        String FreeText=edFreeText.getText().toString();
+        final String FreeText=edFreeText.getText().toString();
         String Time=ed1.getText().toString();
         if (Type.length() == 0) {
             edEventName.setError("Name can not be empty");
@@ -91,8 +91,26 @@ public class AddExamActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(AddExamActivity.this, "Add Successful", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(AddExamActivity.this,MainActivity.class);
+//                        Intent intent = new Intent(AddExamActivity.this,"com.android.calendar.LaunchActivity".getClass());
+//                        startActivity(intent);
+                        Intent intent = new Intent(Intent.ACTION_INSERT);
+                        intent.setType("vnd.android.cursor.item/event");
+
+                        Calendar cal = Calendar.getInstance();
+
+
+                        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time);
+                        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time);
+                        intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+
+                        intent.putExtra(CalendarContract.Events.TITLE,CourseTitle);
+                        intent.putExtra(CalendarContract.Events.DESCRIPTION,FreeText );
+                        //intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "My Guest House");
+                        intent.putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
+                        finish();
+
                         startActivity(intent);
+
                     } else {
                         Toast.makeText(AddExamActivity.this, "Add Faild" +task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -100,22 +118,7 @@ public class AddExamActivity extends AppCompatActivity {
             });
 
            // public void onAddEventClicked(View view) {
-                Intent intent = new Intent(Intent.ACTION_INSERT);
-                intent.setType("vnd.android.cursor.item/event");
 
-                Calendar cal = Calendar.getInstance();
-
-
-                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time);
-                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time);
-                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-
-                intent.putExtra(CalendarContract.Events.TITLE,CourseTitle);
-                intent.putExtra(CalendarContract.Events.DESCRIPTION,FreeText );
-                //intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "My Guest House");
-                intent.putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
-
-                startActivity(intent);
             }
 
         }
